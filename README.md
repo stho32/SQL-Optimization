@@ -16,3 +16,5 @@ GO
 
 - scalar functions --> is a view better?, can you cache values in variables?
 - GETDATE()? can it be cached in a variable?
+- having a look at the real execution plan: is an index recommended? does it work?
+- join hints: does a join hint like LEFT HASH JOIN LEFT MERGE JOIN or something like that change the performance?
