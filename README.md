@@ -11,3 +11,8 @@ GO
 DBCC DROPCLEANBUFFERS; 
 GO
 ```
+
+## Things to look out for
+
+- scalar functions --> is a view better?, can you cache values in variables?
+- GETDATE()? can it be cached in a variable?
