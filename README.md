@@ -6,7 +6,7 @@ Notes on optimizing SQL
 ### Before you start
 
 1. Create/choose a representative test case that you can execute multiple times. When getting more sophisticated and detailed you might create additional sub-test cases later, but you have to keep the most overarching one because this one marks your starting point and is later needed to verify your overall result. Without it you have nothing but wasted time. You might have optimized but who knows, maybe you have slowed down the system instead.
-  1. Also check if the sql is REALLY the bottleneck. The execution of the sql should take up the most time.
+  1. Also check if the sql is REALLY the bottleneck. The execution of the sql should take up the most time. E.g. in .Net applications you have the option to use a profiler.
 2. Choose how often you execute your test case
   - As a rule of thumb a number between 3 and 10 should be fine. After this point we will call this, by which we mean executing your test case n times, "taking a sample".
   - When you take your sample without changing your code the distribution of execution durations you get should be about the same.
