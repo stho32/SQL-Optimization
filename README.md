@@ -47,4 +47,7 @@ GO
 - having a look at the real execution plan: is an index recommended? does it work?
 - join hints: does a join hint like LEFT HASH JOIN LEFT MERGE JOIN or something like that change the performance?
 - CLR functions share a thread, so they might be even more of a pain than scalar functions
-- do not simply guess - test!
+- do not simply guess - test! When you find an sql statement to be slow, start by commenting things out until it becomes fast.
+- performance can be impacted by the amount and size of data you get back. This is especially true for big binary fields. In a simple flat table retrieving 200tsd. lines of content takes almost no time. So when it is slow, there is a reason.
+- when having multiple tables, the order of joined tables in a sql statement should be in a way, so that the tables with the most effective filtering / reduction of the result row count should be joined/handled first. This way the follow up pipelines have less things to do. Be aware that the sql server optimizer is already capable to do this by himself to a certain degree, so this might yield no result or it might take some effort.
+- 
