@@ -46,3 +46,5 @@ GO
 - GETDATE()? can it be cached in a variable?
 - having a look at the real execution plan: is an index recommended? does it work?
 - join hints: does a join hint like LEFT HASH JOIN LEFT MERGE JOIN or something like that change the performance?
+- CLR functions share a thread, so they might be even more of a pain than scalar functions
+- do not simply guess - test!
