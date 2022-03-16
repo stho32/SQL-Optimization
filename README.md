@@ -15,6 +15,8 @@ Notes on optimizing SQL
   - Average with standard distribution (+/-)
   - Eliminate the most extreme n outliers and then calculate the average of the remaining durations
 
+Ensure that you document each step of the way. Especially your starting point, as it will help you to tell the other people around you what you did all day and what the benefit was.
+
 ### Executing the optimization
 
 - Ensure you keep the code for the currently running version of the code. You will need it to ensure, that the results of your new code are the same. You only want to change the performance.
