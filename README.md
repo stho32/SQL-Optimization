@@ -19,6 +19,8 @@ Ensure that you document each step of the way. Especially your starting point, a
 
 Ensure you keep the code for the currently running version of the code. You will need it to ensure, that the results of your new code are the same. You only want to change the performance. A good rule of thumb is to create the new version with a versioning number at the end. E.g. if "HelloWorldView" is your original view then "HelloWorldView2" is the next new implementation. Also this makes sure that you do not break any running code. Even if you change the output, old code will be able to use your old implementation until explicitly told to do otherwise.
 
+You should have a version control ready for your database. You can create one by extracting all code like every day inti a git repository for example and then automatically commit and push every day. Thus, when you stumble, you can always roll back to an earlier version.
+
 ### Executing the optimization
 
 1. Write down a quick note of what you changed
