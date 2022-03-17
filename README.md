@@ -14,6 +14,7 @@ Notes on optimizing SQL
   - Average
   - Average with standard distribution (+/-)
   - Eliminate the most extreme n outliers and then calculate the average of the remaining durations
+4. Choose what to measure. Although we speak of duration in this text it might actually be not the right value to measure because optimizations might kick in that render the test useless. E.g. the query might take 8s the first run but subsequent calls seem to take less and less time because the sql server optimizes in the background. To circumvent this behaviour you might want to choose a different metric like ˋSET STATISTICS IO ONˋ
 
 Ensure that you document each step of the way. Especially your starting point, as it will help you to tell the other people around you what you did all day and what the benefit was.
 
