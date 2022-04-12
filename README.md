@@ -23,12 +23,25 @@ Notes on optimizing SQL
 
 8. You should have a version control ready for your database. You can create one by extracting all code like every day into a git repository for example and then automatically commit and push every day. Thus, when you stumble, you can always roll back to an earlier version.
 
-### Executing the optimization
+### Executing the optimization in general
 
 1. Write down a quick note of what you changed
 2. Take the sample and write down the results
 3. Think about what you learned and change the code a little bit again
 4. Goto 1 until satisfied with the result
+
+The top of your script should read like about this:
+```sql
+-- Baseline: 24s 26s 25s = 25s
+-- Commented out everything besides FROM, its columns and where statements
+-- new measurement: 1s 1s 0s = 1s
+-- Commented in join a (first join) and all its columns and where-statements
+-- new measurement: 19s 18s 19s = 19s
+-- optimized ...
+-- new measurement: 5s 6s 4s = 5s
+-- ...
+´´´
+That is your optimization protocol and the thing that you throw at people that ask you what you did that day.
 
 ### Algorithm for optimizing Views
 
@@ -47,7 +60,7 @@ CREATE VIEW abc
 
 1. add the code for dropping the cache
 2. comment out ´CREATE VIEW´ AND ´ÁS´
-3. Comment out every join and every column that is selected besides the first selected column from the from statement. 
+3. Comment out every join and every column that is selected besides the from and its columns and where-elements. 
 4. Is the execution fast now? No -> restart the process using the code of view a. The problem starts there.
 5. The execution is fast now! Yes:
 6. while there are joins still left comment in one of the joins you have commented out. Every time you do that also comment in every column that should work now. Also comment in every part of the where statement that should work now. The columns and where-statments are important as they define the load transfered and the indexes used.
