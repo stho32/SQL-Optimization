@@ -60,7 +60,7 @@ CREATE VIEW abc
 ```
 
 1. add the code for dropping the cache
-2. comment out ´CREATE VIEW´ AND ´ÁS´
+2. comment out ´CREATE VIEW´ AND ´AS´
 3. Comment out every join and every column that is selected besides the from and its columns and where-elements. 
 4. Is the execution fast now? No -> restart the process using the code of view a. The problem starts there.
 5. The execution is fast now! Yes:
