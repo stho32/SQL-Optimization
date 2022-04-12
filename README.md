@@ -40,7 +40,8 @@ The top of your script should read like about this:
 -- optimized ...
 -- new measurement: 5s 6s 4s = 5s
 -- ...
-´´´
+```
+
 That is your optimization protocol and the thing that you throw at people that ask you what you did that day.
 
 ### Algorithm for optimizing Views
