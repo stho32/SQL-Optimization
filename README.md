@@ -61,14 +61,15 @@ CREATE VIEW abc
 
 1. add the code for dropping the cache
 2. comment out ´CREATE VIEW´ AND ´AS´
-3. Comment out every join and every column that is selected besides the from and its columns and where-elements. 
-4. Is the execution fast now? No -> restart the process using the code of view a. The problem starts there.
-5. The execution is fast now! Yes:
-6. while there are joins still left comment in one of the joins you have commented out. Every time you do that also comment in every column that should work now. Also comment in every part of the where statement that should work now. The columns and where-statments are important as they define the load transfered and the indexes used.
-7. Is the execution slow now? No: Goto 6
-8. Is the execution slow now? Yes: 
-9. Change things until the query is fast again.
-10. Goto 6 
+3. if you have subselects that are unioned then try each separate select and continue with the slowest
+4. Comment out every join and every column that is selected besides the from and its columns and where-elements. 
+5. Is the execution fast now? No -> restart the process using the code of view a. The problem starts there.
+6. The execution is fast now! Yes:
+7. while there are joins still left comment in one of the joins you have commented out. Every time you do that also comment in every column that should work now. Also comment in every part of the where statement that should work now. The columns and where-statments are important as they define the load transfered and the indexes used.
+8. Is the execution slow now? No: Goto 6
+9. Is the execution slow now? Yes: 
+10. Change things until the query is fast again.
+11. Goto 6 
 
 #### Look out for
 
