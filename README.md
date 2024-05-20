@@ -7,7 +7,7 @@ This guide provides notes and techniques for optimizing SQL queries and views to
 
 Before you even look at your SQL query: Use a profiler tailored to your development environment (e.g., dotTrace for .NET, Java profilers for Java applications) to:
 
-- Analyze the overall performance of your application.
+- Analyze the overall performance of your applications use case.
 - Verify if SQL queries are a significant bottleneck:
   - If yes, proceed with SQL query optimization.
   - If not, address other performance issues first.
