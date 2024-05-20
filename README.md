@@ -1,5 +1,5 @@
 # SQL-Optimization
-Notes on optimizing SQL
+This guide provides notes and techniques for optimizing SQL queries and views to improve performance.
 
 ## General Procedure
 
