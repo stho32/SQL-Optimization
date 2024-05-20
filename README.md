@@ -21,7 +21,11 @@ Before you even look at your SQL query: Use a profiler tailored to your developm
 
 2. **Sampling and Measurement**
 
-    - Choose your metric, e.g. duration or logical reads using `SET STATISTICS IO ON` (the simple duration of a query can and can not be a valid orientation because auf SQL Server Caching methods, you might prefer logical reads instead).
+    - Choose your metric, e.g. duration or logical reads
+        - a lot of times just measuring the duration of the execution in the query analyzer might be sufficient
+        - sometimes the caching behaviour of the sql server will obscure your results. You can do 2 things then:
+            - Using `SET STATISTICS IO ON` and the `logical reads` as a value for orientation as it will be very constant even if the duration varies. A smaller value is better.
+            - Include a dropping of the caches into your test case `CHECKPOINT; GO; DBCC DROPCLEANBUFFERS; GO;` Be aware that the dropping of the cache can also impact your measurement badly.
     - Select a calculation method for your guiding value (average, average with standard deviation, or trimmed mean).
     - Taking a sample means you run the test case multiple times (3-10) to capture variability in execution times.
     - Avoid changing the repetition count and calculation method after this point, because your results will not be comparable then.
@@ -53,4 +57,3 @@ Before you even look at your SQL query: Use a profiler tailored to your developm
 There might be a necessity to dive deeper into separate elements. E.g. it can be that you start out with a view but find out, that a specific scalar function that is used is the bottleneck. In that case you can apply the optimization process recursivly (start again at 1. "Choose a representative test" for the subquery, scalar function, ...).
 
 
-- 
