@@ -40,6 +40,7 @@ Before you even look at your SQL query: Use a profiler tailored to your developm
 ```
 
 4. **Execute the optimization: Iterative approach**
+
   1. Isolate the slowest part of the query.
   2. Change it.
   3. Document what you have changed.
