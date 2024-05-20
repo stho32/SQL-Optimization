@@ -16,22 +16,23 @@ Before you even look at your SQL query: Use a profiler tailored to your developm
 
 1. **Choose a Representative Test Case that can be executed multiple times**
 
-  - Select a query or set of queries that accurately reflects typical usage.
-  - When you are about to test a stored procedure do a code review of the stored procedure first. Be sure that you know which branches of the code you want to optimize and that you really cover them all.
+    - Select a query or set of queries that accurately reflects typical usage.
+    - When you are about to test a stored procedure do a code review of the stored procedure first. Be sure that you know which branches of the code you want to optimize and that you really cover them all.
 
 2. **Sampling and Measurement**
 
-  - Choose your metric, e.g. duration or logical reads using `SET STATISTICS IO ON` (the simple duration of a query can and can not be a valid orientation because auf SQL Server Caching methods, you might prefer logical reads instead).
-  - Select a calculation method for your guiding value (average, average with standard deviation, or trimmed mean).
-  - Taking a sample means you run the test case multiple times (3-10) to capture variability in execution times.
-  - Avoid changing the repetition count and calculation method after this point, because your results will not be comparable then.
-  - You know your sampling method is good when you take your sample without changing your code and the distribution of execution durations you get are about the same.
-  - Keep the most overarching test case around because this one marks your starting point and is later needed to verify your overall result. Without it you have nothing but wasted time. You might have optimized but who knows, maybe you have slowed down the system instead.
+    - Choose your metric, e.g. duration or logical reads using `SET STATISTICS IO ON` (the simple duration of a query can and can not be a valid orientation because auf SQL Server Caching methods, you might prefer logical reads instead).
+    - Select a calculation method for your guiding value (average, average with standard deviation, or trimmed mean).
+    - Taking a sample means you run the test case multiple times (3-10) to capture variability in execution times.
+    - Avoid changing the repetition count and calculation method after this point, because your results will not be comparable then.
+    - You know your sampling method is good when you take your sample without changing your code and the distribution of execution durations you get are about the same.
+    - Keep the most overarching test case around because this one marks your starting point and is later needed to verify your overall result. Without it you have nothing but wasted time. You might have optimized but who knows, maybe you have slowed down the system instead.
 
 3. **Document your optimization process**
-  - Maintain a log of each change as well as the samples you have taken.
-  - Do not forget to especially have a starting sample (baseline) because whatever you do, in the end you might want to have a result statement like "we improved the performance from ... to ...". And you might want to withstand a test of your superior that asks you about what you have changed. Also performance tests can be time consuming. You superior will be much more satisfied with you if you can tell him about the 20 small tests you performed that might not have improved the result but still show, that you were systematically working through all the ideas he might have had as well.
-  - It is ok to document directly in the query analyzer. E.g.:
+
+    - Maintain a log of each change as well as the samples you have taken.
+    - Do not forget to especially have a starting sample (baseline) because whatever you do, in the end you might want to have a result statement like "we improved the performance from ... to ...". And you might want to withstand a test of your superior that asks you about what you have changed. Also performance tests can be time consuming. You superior will be much more satisfied with you if you can tell him about the 20 small tests you performed that might not have improved the result but still show, that you were systematically working through all the ideas he might have had as well.
+    - It is ok to document directly in the query analyzer. E.g.:
 
 ```sql
 -- - Baseline: 24s 26s 25s = 25s average
