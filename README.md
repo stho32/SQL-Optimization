@@ -41,12 +41,12 @@ Before you even look at your SQL query: Use a profiler tailored to your developm
 
 4. **Execute the optimization: Iterative approach**
 
-  1. Isolate the slowest part of the query.
-  2. Change it.
-  3. Document what you have changed.
-  4. Take the sample for that change.
-  5. Decide based on the results wether to keep that change or to roll it back.
-  6. Repeat from 1. until satisfied with the performance improvement.
+    1. Isolate the slowest part of the query.
+    2. Change it.
+    3. Document what you have changed.
+    4. Take the sample for that change.
+    5. Decide based on the results wether to keep that change or to roll it back.
+    6. Repeat from 1. until satisfied with the performance improvement.
 
 There might be a necessity to dive deeper into separate elements. E.g. it can be that you start out with a view but find out, that a specific scalar function that is used is the bottleneck. In that case you can apply the optimization process recursivly (start again at 1. "Choose a representative test" for the subquery, scalar function, ...).
 
