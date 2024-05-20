@@ -16,7 +16,7 @@ Before you even look at your SQL query: Use a profiler tailored to your developm
 
 1. **Choose a Representative Test Case that can be executed multiple times**
   - Select a query or set of queries that accurately reflects typical usage.
-  - When getting more sophisticated and detailed you might create additional sub-test cases later, but you have to keep the most overarching one because this one marks your starting point and is later needed to verify your overall result. Without it you have nothing but wasted time. You might have optimized but who knows, maybe you have slowed down the system instead.
+    - When you are about to test a stored procedure do a whitebox test of the stored procedure first. Be sure that you know which branches of the code inside you want to optimize and that you really cover them all.
 
 2. **Sampling and Measurement**
   - Choose your metric (e.g. duration or logical reads using SET STATISTICS IO ON, the simple duration of a query can and can not be a valid orientation because auf SQL Server Caching methods, you might prefer logical reads instead).
@@ -25,6 +25,7 @@ Before you even look at your SQL query: Use a profiler tailored to your developm
     - to capture variability in execution times.
     - avoid changing the repetition count and calculation method after this point, because your results will not be comparable then.
   - You know your sampling method is good when you take your sample without changing your code and the distribution of execution durations you get are about the same.
+  - Keep the most overarching test case around because this one marks your starting point and is later needed to verify your overall result. Without it you have nothing but wasted time. You might have optimized but who knows, maybe you have slowed down the system instead.
 
 3. **Document your optimization process**
   - Maintain a detailed log of each change as well as the samples you have taken.
