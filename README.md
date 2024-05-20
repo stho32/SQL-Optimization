@@ -65,7 +65,7 @@ There might be a necessity to dive deeper into separate elements. E.g. it can be
   - Applying scalar functions to many rows results in row-by-row processing, which is inefficient.
 
 - **Ideas to Improve Performance:**
-  - Convert scalar functions to views where possible.
+  - Convert scalar functions to views or table valued functions where possible.
   - Cache values in variables to avoid repeated calculations.
 
 #### 2. CASE Statements
