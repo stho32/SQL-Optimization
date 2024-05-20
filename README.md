@@ -22,8 +22,8 @@ Before you even look at your SQL query, use a profiler tailored to your developm
 2. **Sampling and Measurement**
 
     - Choose your metric, e.g., duration or logical reads
-        - a lot of times, just measuring the duration of the execution in the query analyzer might be sufficient
-        - sometimes, the caching behavior of the SQL server will obscure your results. You can do two things then:
+        - A lot of times, just measuring the duration of the execution in the query analyzer might be sufficient.
+        - Sometimes, the caching behavior of the SQL server will obscure your results. You can do two things then:
             - Using `SET STATISTICS IO ON` and the `logical reads` as a value for orientation will be very constant, even if the duration varies. A smaller value is better.
             - Include a drop of the caches in your test case `CHECKPOINT; GO; DBCC DROPCLEANBUFFERS; GO;` Be aware that dropping the cache can also negatively impact your measurement as it may take a long and variable amount of time.
     - Select a calculation method for your guiding value (average, average with standard deviation, or trimmed mean).
@@ -61,8 +61,7 @@ There might be a necessity to dive deeper into separate elements. For example, y
 
 #### 1. Scalar Functions
 
-- **Why They Are Slow:**
-  - Applying scalar functions to many rows results in row-by-row processing, which could be more efficient.
+- Applying scalar functions to many rows results in row-by-row processing, which could be more efficient.
 
 - **Ideas to Improve Performance:**
   - Convert scalar functions to views or table-valued functions where possible.
@@ -70,16 +69,14 @@ There might be a necessity to dive deeper into separate elements. For example, y
 
 #### 2. CASE Statements
 
-- **Why They Are Slow:**
-  - CASE statements applied to many rows can lead to complex and slow query execution.
+- CASE statements applied to many rows can lead to complex and slow query execution.
 
 - **Ideas to Improve Performance:**
   - Convert CASE statements to subselects using UNIONs to simplify and speed up execution.
 
 #### 3. Join Types
 
-- **Why They Are Slow:**
-  - Inefficient join types can lead to sizeable intermediate result sets and slow performance.
+- Inefficient join types can lead to sizeable intermediate result sets and slow performance.
 
 - **Ideas to Improve Performance:**
   - Optimize join operations by using join hints like LEFT HASH JOIN or LEFT MERGE JOIN.
@@ -87,8 +84,7 @@ There might be a necessity to dive deeper into separate elements. For example, y
 
 #### 4. Indexes
 
-- **Why They Are Slow:**
-  - Missing or improperly defined indexes cause full table scans instead of quick index lookups.
+- Missing or improperly defined indexes cause full table scans instead of quick index lookups.
 
 - **Ideas to Improve Performance:**
   - Review the execution plan to identify missing indexes.
@@ -96,8 +92,7 @@ There might be a necessity to dive deeper into separate elements. For example, y
 
 #### 5. Dynamic SQL
 
-- **Why They Are Slow:**
-  - Dynamic SQL can bypass query optimization and lead to inefficient execution plans.
+- Dynamic SQL can bypass query optimization and lead to inefficient execution plans.
 
 - **Ideas to Improve Performance:**
   - Use parameterized queries instead of dynamic SQL where possible.
@@ -105,8 +100,7 @@ There might be a necessity to dive deeper into separate elements. For example, y
 
 #### 6. Subselects
 
-- **Why They Are Slow:**
-  - Subselects, especially in UNION statements, can cause the query to process extensive data sets multiple times.
+- Subselects, especially in UNION statements, can cause the query to process extensive data sets multiple times.
 
 - **Ideas to Improve Performance:**
   - Test each subselect individually and optimize the slowest ones first.
@@ -114,8 +108,7 @@ There might be a necessity to dive deeper into separate elements. For example, y
 
 #### 7. CLR Functions
 
-- **Why They Are Slow:**
-  - CLR functions share a thread and can be slower than native SQL functions due to the overhead of managed code execution.
+- CLR functions share a thread and can be slower than native SQL functions due to the overhead of managed code execution.
 
 - **Ideas to Improve Performance:**
   - Avoid using CLR functions unless necessary.
@@ -123,8 +116,7 @@ There might be a necessity to dive deeper into separate elements. For example, y
 
 #### 8. Large Binary Fields
 
-- **Why They Are Slow:**
-  - Retrieving large binary fields can consume significant I/O bandwidth and memory.
+- Retrieving large binary fields can consume significant I/O bandwidth and memory.
 
 - **Ideas to Improve Performance:**
   - Optimize queries to minimize the retrieval of large binary fields.
@@ -132,8 +124,7 @@ There might be a necessity to dive deeper into separate elements. For example, y
 
 #### 9. Order of Joins
 
-- **Why They Are Slow:**
-  - Inefficient join order can lead to sizeable intermediate result sets and excessive processing.
+- Inefficient join order can lead to sizeable intermediate result sets and excessive processing.
 
 - **Ideas to Improve Performance:**
   - Join tables with the most effective filtering conditions first to reduce the result row count early.
@@ -141,8 +132,7 @@ There might be a necessity to dive deeper into separate elements. For example, y
 
 #### 10. Inefficient WHERE Clauses
 
-- **Why They Are Slow:**
-  - Complex and poorly optimized WHERE clauses can lead to full table scans and slow performance.
+- Complex and poorly optimized WHERE clauses can lead to full table scans and slow performance.
 
 - **Ideas to Improve Performance:**
   - Simplify WHERE clauses and ensure they use indexed columns effectively.
@@ -150,16 +140,14 @@ There might be a necessity to dive deeper into separate elements. For example, y
 
 #### 11. GETDATE() Function
 
-- **Why They Are Slow:**
-  - Repeatedly calling GETDATE() in a query can cause redundant calculations and slow execution.
+- Repeatedly calling GETDATE() in a query can cause redundant calculations and slow execution.
 
 - **Ideas to Improve Performance:**
   - Cache the result of GETDATE() in a variable if used multiple times within a query or procedure.
 
 #### 12. Caches
 
-- **Why They Are Slow:**
-  - SQL Server caching mechanisms can mask the actual performance of queries, making it difficult to measure improvements.
+- SQL Server caching mechanisms can mask the actual performance of queries, making it difficult to measure improvements.
 
 - **Ideas to Improve Performance:**
   - Use `CHECKPOINT` and `DBCC DROPCLEANBUFFERS` commands to clear caches before taking performance measurements for accurate results.
